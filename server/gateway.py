@@ -97,10 +97,14 @@ def inscripcion(product, documento, tipo):
             "numero_documento": documento, "telefono_titular": "+573000000000"}
 
 
-def checkout(product, attempt, solicitar_3ds=False, documento="12", tipo="C.C"):
+def checkout(product, attempt, solicitar_3ds=False, documento="12", tipo="C.C", resultado_sandbox="habitual"):
     if not isinstance(documento, str) or not re.fullmatch(r"[A-Za-z0-9]{1,24}", documento) or not isinstance(tipo, str) or not re.fullmatch(r"[A-Za-z.]{1,8}", tipo):
         raise ValueError("Revisa el tipo y número de documento de prueba.")
+    if resultado_sandbox not in ("habitual", "Aprobado", "Rechazado", "Pendiente"):
+        raise ValueError("Selecciona un escenario de prueba válido.")
     record = inscripcion(product, documento, tipo)
+    if resultado_sandbox != "habitual":
+        record["valor_pago_recurrente"] = 2020 if resultado_sandbox == "Pendiente" else 1000 if solicitar_3ds else 500
     account = record["cuenta_pasarela"]
     if not all(os.getenv(prefix + account) for prefix in ("RAPYD_ACCESS_KEY_", "RAPYD_SECRET_KEY_")):
         raise ValueError("Configura las llaves Sandbox de " + account + " o usa un Checkout creado en Postman.")
@@ -257,7 +261,8 @@ class Handler(BaseHTTPRequestHandler):
             data = json.loads(self.rfile.read(length))
             attempt = str(uuid.UUID(data["attempt"]))
             result = {"id": checkout(data["product"], attempt, data.get("solicitar3ds") is True,
-                                     data.get("documento", "12"), data.get("tipo", "C.C")),
+                                     data.get("documento", "12"), data.get("tipo", "C.C"),
+                                     data.get("resultadoSandbox", "habitual")),
                       "identidadAplicada": True,
                       "retornoConfigurado": bool(public_origin())}
             status = 200

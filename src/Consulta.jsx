@@ -6,6 +6,7 @@ export default function Consulta() {
   const escenario = query.get('escenario');
   const config = JSON.parse(sessionStorage.getItem('escenario-alfa') || 'null');
   const documento = config?.id === escenario ? config.documento : '';
+  const importe = config?.id === escenario ? config.importe || 125000 : 125000;
   const resumen = query.has('resumen');
   const anterior = JSON.parse(sessionStorage.getItem('consulta-demo') || '{}');
   const [resultado, mostrar] = useState(resumen ? 'encontrado' : '');
@@ -74,7 +75,7 @@ export default function Consulta() {
               <small>Estado de póliza</small>
               <b className="positive">Activo</b>
             </div>
-            <span>COP 125.000</span>
+            <span>COP {importe.toLocaleString("es-CO")}</span>
             <span className="badge warn"><svg className="icon icon-dot" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12.1" cy="12.1" r="1"/></svg> Pendiente</span>
             <a className="btn" href={enlace('GRD-7812-334')}>Pagar</a>
           </div>
@@ -93,7 +94,7 @@ export default function Consulta() {
               <small>Estado de póliza</small>
               <b className="positive">Activo</b>
             </div>
-            <span>COP 125.000</span>
+            <span>COP {importe.toLocaleString("es-CO")}</span>
             <span className="badge info"><svg className="icon icon-dot" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12.1" cy="12.1" r="1"/></svg> En proceso</span>
             <button disabled>Pagar</button>
           </div>
@@ -112,7 +113,7 @@ export default function Consulta() {
               <small>Estado de póliza</small>
               <b className="negative">Mora</b>
             </div>
-            <span>COP 125.000</span>
+            <span>COP {importe.toLocaleString("es-CO")}</span>
             <span className="badge bad"><svg className="icon icon-dot" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12.1" cy="12.1" r="1"/></svg> Rechazada</span>
             <a className="btn" href={enlace('VID-7812-334')}>Pagar</a>
           </div>
@@ -131,7 +132,7 @@ export default function Consulta() {
               <small>Estado de póliza</small>
               <b className="negative">Mora</b>
             </div>
-            <span>COP 125.000</span>
+            <span>COP {importe.toLocaleString("es-CO")}</span>
             <span className="badge bad"><svg className="icon icon-dot" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12.1" cy="12.1" r="1"/></svg> Rechazada</span>
             <a className="btn" href={enlace('AUT-7812-323')}>Reintentar</a>
           </div>
@@ -150,7 +151,7 @@ export default function Consulta() {
               <small>Estado de póliza</small>
               <b className="positive">Activo</b>
             </div>
-            <span>COP 125.000</span>
+            <span>COP {importe.toLocaleString("es-CO")}</span>
             <span className="badge good"><svg className="icon icon-dot" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12.1" cy="12.1" r="1"/></svg> Pagada</span>
             <button disabled>Pagada</button>
           </div>
@@ -169,7 +170,7 @@ export default function Consulta() {
   <button className="cerrar-modal" type="button" aria-label="Cerrar">×</button>
   <h2 id="titulo-pago">Completa tu pago</h2>
   <p id="instruccion-tarjeta">Ingresa los datos de tu tarjeta en el formulario seguro de Rapyd.</p>
-  <div className="summary spread"><div><strong id="producto"></strong><small id="frecuencia"></small></div><b>COP 125.000</b></div>
+  <div className="summary spread"><div><strong id="producto"></strong><small id="frecuencia"></small></div><b>COP {importe.toLocaleString("es-CO")}</b></div>
   <p>Si Rapyd te ofrece guardar la tarjeta, puedes autorizar los próximos cobros de esta póliza. Al finalizar podrás consultar por separado el resultado del pago y el de la inscripción. <button type="button" className="legal-link" id="saber-mas">Saber más</button></p>
   <p id="mensaje" role="status"></p>
   <div className="checkout-area">

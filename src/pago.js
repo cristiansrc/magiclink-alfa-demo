@@ -24,6 +24,10 @@ export function iniciar() {
     const $ = id => document.getElementById(id);
     $('producto').textContent = products[product][0] + ' · ' + product;
     $('frecuencia').textContent = products[product][1];
+    if (scenario?.mode === 'sandbox' && scenario.resultadoSandbox) {
+      const tarjeta = scenario.resultadoSandbox === 'Rechazado' ? '4111 1111 1111 1105' : '4111 1111 1111 1111';
+      $('instruccion-tarjeta').textContent = 'Tarjeta de prueba: ' + tarjeta + '. Usa una fecha futura y cualquier CVV de tres dígitos.';
+    }
     const consulta = JSON.parse(sessionStorage.getItem('consulta-demo') || '{}');
     const documento = scenario?.documento || consulta.value || '12';
     const tipo = scenario?.documento ? 'C.C' : (consulta.code || 'C.C');
@@ -101,7 +105,7 @@ export function iniciar() {
               sessionStorage.setItem(key, attempt);
             }
           }
-          const response = await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...base, attempt, solicitar3ds: Boolean(scenario?.tres)})});
+          const response = await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...base, attempt, solicitar3ds: Boolean(scenario?.tres), resultadoSandbox: scenario?.resultadoSandbox || 'habitual'})});
           if (response.status === 404) throw Error('Revisa el servidor del demo para habilitar la prueba de Colombia en COP.');
           if (!response.headers.get('content-type')?.includes('application/json')) throw Error('Inicia el servidor local indicado en el LEEME o usa un Checkout de Postman.');
           const data = await response.json();
