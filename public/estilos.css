@@ -136,3 +136,6 @@ dialog.loader p { margin: 0; font-size: 19px; }
 .test-cards th, .test-cards td { padding: 12px; border-bottom: 1px solid var(--borde); }
 .test-cards th { color: var(--tinta); background: var(--suave); }
 .test-cards td:first-child { white-space: nowrap; }
+
+.restart-demo { margin-top: 20px; }
+.restart-demo .btn { display: inline-block; }

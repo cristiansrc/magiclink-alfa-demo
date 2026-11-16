@@ -10,6 +10,6 @@ export default function Banco() {
   }
   return <>
 <header><img src="assets/alfa.png" alt="Seguros Alfa" /></header><main className="flow"><article className="panel"><small>SIMULACIÓN · BANCO DE PRUEBA</small><h1>Autoriza tu compra</h1><p>Confirma la operación de Seguros Alfa por COP 125.000 con tu tarjeta de prueba.</p><button id="autorizar" onClick={() => terminar(false)}>Autorizar</button> <button id="cancelar" onClick={() => terminar(true)} className="outline">Cancelar verificación</button></article></main>
-<footer>Seguros Alfa · Ambiente de pruebas</footer>
+<footer>Seguros Alfa · Ambiente de pruebas<div className="restart-demo"><a className="btn outline" href="/pruebas.html">Reiniciar demo</a></div></footer>
   </>;
 }

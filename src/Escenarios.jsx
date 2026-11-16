@@ -61,6 +61,6 @@ export default function Escenarios() {
         <p>Al finalizar un pago aprobado con la tarjeta inscrita, abre la consola del navegador para ver el objeto «Método de pago inscrito en Rapyd». El campo <code>id</code> contiene el identificador de la tarjeta, que comienza por <code>card_</code> y se utiliza para los pagos posteriores.</p>
       </section>
     </article></main>
-    <footer>Seguros Alfa · Ambiente de pruebas</footer>
+    <footer>Seguros Alfa · Ambiente de pruebas<div className="restart-demo"><a className="btn outline" href="/pruebas.html">Reiniciar demo</a></div></footer>
   </>;
 }

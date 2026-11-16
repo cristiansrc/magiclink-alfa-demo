@@ -164,7 +164,7 @@ export default function Consulta() {
       <span>Canales de atención</span>
       <span>Privacidad del sitio web</span>
       <img src="assets/vigilado.png" alt="Vigilado por la Superintendencia Financiera de Colombia" />
-    </footer>
+    <div className="restart-demo"><a className="btn outline" href="/pruebas.html">Reiniciar demo</a></div></footer>
   <dialog id="pago-modal" aria-labelledby="titulo-pago">
   <div className="brand">Pago seguro con <img src="https://www.rapyd.net/wp-content/uploads/2022/07/rapyd-logo.svg" alt="Rapyd" width="84" /></div>
   <button className="cerrar-modal" type="button" aria-label="Cerrar">×</button>

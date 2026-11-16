@@ -47,7 +47,7 @@ export default function Resultado() {
       <span>Canales de atención</span>
       <span>Privacidad del sitio web</span>
       <p>© 2026 SEGUROS ALFA</p>
-    </footer>
+    <div className="restart-demo"><a className="btn outline" href="/pruebas.html">Reiniciar demo</a></div></footer>
   <dialog id="procesando" className="loader" aria-label="Procesando"><img src="assets/procesando.gif" width="58" height="58" alt="" /><p role="status">Procesando…</p></dialog>
   
   </>;
