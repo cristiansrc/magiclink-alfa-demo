@@ -128,3 +128,11 @@ dialog.loader p { margin: 0; font-size: 19px; }
   background: white;
 }
 #root { display: contents; }
+
+.test-cards { margin-top: 36px; }
+.test-cards h2 { font-size: 20px; color: var(--tinta); }
+.test-cards-scroll { overflow-x: auto; }
+.test-cards table { width: 100%; border-collapse: collapse; text-align: left; }
+.test-cards th, .test-cards td { padding: 12px; border-bottom: 1px solid var(--borde); }
+.test-cards th { color: var(--tinta); background: var(--suave); }
+.test-cards td:first-child { white-space: nowrap; }

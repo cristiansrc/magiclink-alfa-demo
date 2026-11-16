@@ -43,6 +43,22 @@ export default function Escenarios() {
         <label className="check"><input type="checkbox" name="tres" checked={tres} onChange={event => setTres(event.target.checked)} />Verificar con el banco (3DS)</label>
         <button>Probar escenario</button>
       </form>
+      <section className="test-cards" aria-labelledby="test-cards-title">
+        <h2 id="test-cards-title">Tarjetas de prueba de Rapyd Sandbox</h2>
+        <p>Usa una fecha de vencimiento futura y cualquier CVV de tres dígitos.</p>
+        <div className="test-cards-scroll">
+          <table>
+            <thead><tr><th scope="col">Tarjeta</th><th scope="col">Resultado esperado</th></tr></thead>
+            <tbody>
+              <tr><td>4111 1111 1111 1111</td><td>Pago aprobado</td></tr>
+              <tr><td>4111 1111 1111 1105</td><td>Rechazado por el emisor</td></tr>
+              <tr><td>4111 1111 1111 1143</td><td>Rechazado por tarjeta reportada como robada</td></tr>
+              <tr><td>4111 1111 1111 1151</td><td>Rechazado por fondos insuficientes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Para probar una liquidación pendiente, selecciona «Pendiente» y usa la tarjeta de pago aprobado. El demo enviará COP 2.020 a Rapyd.</p>
+      </section>
     </article></main>
     <footer>Seguros Alfa · Ambiente de pruebas</footer>
   </>;
