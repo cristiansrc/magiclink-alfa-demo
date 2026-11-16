@@ -38,7 +38,7 @@ export default function Escenarios() {
         </> : <>
           <label>Resultado que deseas probar<select value={resultado} onChange={event => setResultado(event.target.value)}><option>Aprobado</option><option>Rechazado</option><option>Pendiente</option></select></label>
           <p>En el formulario de Rapyd usa la tarjeta de prueba <strong>{tarjeta}</strong>, una fecha futura y cualquier CVV de tres dígitos.</p>
-          <p>El importe y la tarjeta preparan el escenario. Rapyd determina el resultado y puede solicitar 3DS aunque no lo selecciones. El importe de COP 2.020 simula una liquidación pendiente y debe validarse en esta cuenta.</p>
+          <p>El importe y la tarjeta preparan el escenario. Rapyd determina el resultado y puede solicitar 3DS aunque no lo selecciones. El importe de COP 2.020 permite probar una liquidación pendiente.</p>
         </>}
         <label className="check"><input type="checkbox" name="tres" checked={tres} onChange={event => setTres(event.target.checked)} />Verificar con el banco (3DS)</label>
         <button>Probar escenario</button>
@@ -58,6 +58,7 @@ export default function Escenarios() {
           </table>
         </div>
         <p>Para probar una liquidación pendiente, selecciona «Pendiente» y usa la tarjeta de pago aprobado. El demo enviará COP 2.020 a Rapyd.</p>
+        <p>Al finalizar un pago aprobado con la tarjeta inscrita, abre la consola del navegador para ver el objeto «Método de pago inscrito en Rapyd». El campo <code>id</code> contiene el identificador de la tarjeta, que comienza por <code>card_</code> y se utiliza para los pagos posteriores.</p>
       </section>
     </article></main>
     <footer>Seguros Alfa · Ambiente de pruebas</footer>
