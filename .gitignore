@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Compilación
+dist/
+.vercel/
+
+# Entorno y secretos
+.env*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Datos locales de la demo
+.demo.sqlite3*
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,9 @@
+{
+  "framework": null,
+  "installCommand": "npm ci --include=dev",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": false,
+  "rewrites": [{"source": "/", "destination": "/pruebas.html"}],
+  "functions": {"api/*.py": {"includeFiles": "server/**", "maxDuration": 60}}
+}

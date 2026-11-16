@@ -1,0 +1,9 @@
+{
+  "name": "magiclink-alfa-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"build": "node build.mjs", "dev": "npm run build && python3 dev.py"},
+  "dependencies": {"react": "19.2.8", "react-dom": "19.2.8"},
+  "devDependencies": {"esbuild": "0.28.2"}
+}
